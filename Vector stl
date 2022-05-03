@@ -1,0 +1,71 @@
+// Pranav Lad - Creator OF VECTOR NOTES ANS SYNTAXES
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    // method 1
+    vector<int> v = {1,2,3,4,5};
+    vector<int> v2(5); // vector of capacity 5
+    // method 2
+    vector<int> v3(v); // copies all elements of v
+    vector<int> v4(5,1); // all the 5 elements are initialized to 1
+    
+    // functions and methods
+    cout << v.capacity(); //becomes double if element is added and previous v is deleted
+    // or
+    cout << v.max_size();
+    cout << v.size();// returns size - number of elements present
+    cout << v.front();// returns the front element
+    cout << v.back();// returns the last element
+    
+    v.push_back(10); // adding new element
+    // this will double the capacity of vector and delete the previous vector
+    // ex. here the capacity will double and size will increase by 1
+    v.pop_back(); // popping last element
+    v2.clear(); // clears all the elements size becomes 0 capacity remains same
+    
+    // assignment function
+    int a[] = {1,2,3,4};
+    v2.assign(a, a+3);
+    // or
+    // v2.assign(a); not used anymore instead v = a
+    
+    
+    vector<int>:: iterator it;
+    it = v.begin();
+    v.erase(it); // this will erase the first element in the vector
+    
+    
+    // iterating
+    // for printing or traversing vector
+    cout << "\n modified vector is : \n";
+    for(auto i= v.begin(); i!=v.end();i++){
+        cout << *i << endl;
+    }
+    
+    // this will print vector in reverse 
+    for(auto i= v.rend(); i!=v.rbegin();i++){
+        cout << *i << endl;
+    }
+    
+    // one more easy way
+    for(int i : v){
+        cout << i;
+    }
+    
+    // capacity
+    v2.resize(3); // now v2 can contain only 3 elements
+    v.shrink_to_fit(); // reduces capacity to size
+    
+    // reference
+    v.at(3);
+    // it = v.reference_operator(2); function not used anymore
+    v.data(); // returns base memory address
+    
+    // modification
+    v.emplace(it,16); // adds 16 to first position and pushes others further
+    v.emplace_back(12); //appends 12
+    // v.emplace_front(0); adds 0 to front - NOT USED ANYMORE
+    
+}
